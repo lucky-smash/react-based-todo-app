@@ -1,11 +1,17 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar.jsx'
 import { v4 as uuidv4 } from 'uuid' ;
+import useRef from 'react' ;
 
 function App() {
 
   const [todo, setTodo] = useState(" ")
   const [todos, setTodos] = useState([])
+  const [useref, setUseref] = useState(null)
+
+  useState(() => {
+    alert("work in progress")
+  })
 
   const handleEdit = () => {
     alert("Edit button clicked")
@@ -31,6 +37,7 @@ function App() {
     let index = todos.findIndex(item =>{
       return item.id === id;
     })
+    console.log(`The index is ${index}`) ;
     let newTodos = [...todos] ;
     newTodos[index].isCompleted = !newTodos[index].isCompleted ;
     setTodos([...newTodos]) ;
@@ -39,7 +46,9 @@ function App() {
   }
 
   return (
+
     <>
+    
       <Navbar />
       <div className="container max-w-xl mx-auto my-5 rounded text-center bg-violet-100  p-2 min-h-[90vh] ">
         <div className="addTodo">
