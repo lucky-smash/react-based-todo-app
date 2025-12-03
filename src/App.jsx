@@ -9,8 +9,11 @@ function App() {
   const [todos, setTodos] = useState([])
 
   useEffect(() => {
+    let todoString = localStorage.getItem("todos") ;
+    if (todoString){
     let todos = JSON.parse(localStorage.getItem("todos")) 
     setTodos(todos) ;
+    }
   }, [])
 
 
@@ -18,9 +21,6 @@ function App() {
     localStorage.setItem("todos" , JSON.stringify(todos)) ;
   }
 
-  useState(() => {
-    alert("work in progress")
-  })
 
   const handleEdit = (e,id) => {
     console.log(`The id is ${id}`) ;
